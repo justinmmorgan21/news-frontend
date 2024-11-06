@@ -4,9 +4,11 @@ import { Footer } from "./Footer";
 
 function App() {
   return (
-    <div>
+    <div className="font-['Oswald'] flex flex-col min-h-screen">
       <Header />
-      <ArticlesPage />
+      <div className="container mx-auto py-12 px-24 flex-auto mt-16">
+        <ArticlesPage />
+      </div>
       <Footer />
     </div>
   )

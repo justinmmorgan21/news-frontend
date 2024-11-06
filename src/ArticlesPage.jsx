@@ -8,9 +8,9 @@ export function ArticlesPage() {
 
   const articlesIndex = () => {
     axios.get(`http://localhost:3000/articles.json?search=${searchTerms}`).then(response => {
-      console.log(response.data.articles);
+      console.log("data", response.data.articles);
       setArticles(response.data.articles);
-      console.log(searchTerms)
+      console.log("search", searchTerms)
     })
   }
 
@@ -20,15 +20,18 @@ export function ArticlesPage() {
     <main>
       <h1>Welcome to React!</h1>
       <input type="text" onChange={event=>setSearchTerms(event.target.value)}/> <button onClick={() => articlesIndex()}>Search</button>
+      <div className='grid grid-cols-1 gap-6 sm:grid-cols-3'>
       {
         articles.map(article => (
-          <div key={article.id}>
-            <h3>{article.title}</h3>
+          <div key={article.id} className='shadow-md rounded mb-4 p-4'>
+            <h3 className='font-bold'>{article.title}</h3>
             <p>by {article.author}</p> 
             <p >{article.description}</p>
           </div>
         ))
+        
       }
+      </div>
     </main>
   )
 }
